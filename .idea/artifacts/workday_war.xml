@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="workday:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="workday-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="workday:war exploded" />
+    </root>
+  </artifact>
+</component>
