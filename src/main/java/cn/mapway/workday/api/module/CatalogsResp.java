@@ -1,5 +1,6 @@
 package cn.mapway.workday.api.module;
 
+import cn.mapway.document.annotation.ApiField;
 import cn.mapway.document.annotation.Doc;
 import cn.mapway.workday.ui.shared.repository.CATALOGObj;
 
