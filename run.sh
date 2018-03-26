@@ -3,7 +3,7 @@
 #启动方法
 start(){
  now=`date "+%Y%m%d%H%M%S"`
- exec java -Xms128m -Xmx2048m -jar /target/workday-1.0-SNAPSHOT.war 5 >"$now"_bidcheck.log &
+ exec java -Xms128m -Xmx2048m -jar ./target/workday-1.0-SNAPSHOT.war 5 >"$now"_bidcheck.log &
  #java -Xms128m -Xmx2048m -jar cmpp.jar 5 > log.log &
  #tail -f result.log
 }
