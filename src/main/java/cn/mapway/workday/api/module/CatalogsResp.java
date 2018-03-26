@@ -7,5 +7,6 @@ import java.util.List;
 
 @Doc("所有的分类目录")
 public class CatalogsResp extends Resp {
+        @ApiField(value="所有目录")
         public List<CATALOGObj> catalogs;
 }
