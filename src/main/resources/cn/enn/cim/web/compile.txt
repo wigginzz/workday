@@ -1,1 +1,0 @@
-compile@2018年03月19日 10:14:01 from ${env.MVN_BRANCH}

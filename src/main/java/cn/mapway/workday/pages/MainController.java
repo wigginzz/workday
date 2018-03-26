@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class MainController {
-
     /**
      * 首页面.
      *
@@ -16,6 +15,6 @@ public class MainController {
      */
     @RequestMapping(value = "/")
     public String index() {
-        return "jsp/index";
+        return "index";
     }
 }
