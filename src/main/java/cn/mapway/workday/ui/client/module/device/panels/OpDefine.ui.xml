@@ -1,0 +1,44 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:p='urn:import:cn.mapway.ui.client.widget.common'
+             xmlns:common="urn:import:cn.ennwifi.webframe.ui.client.common">
+
+    <ui:style>
+        .tb{
+            padding: 10px;
+        }
+        .lb{
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </ui:style>
+
+    <g:HTMLPanel styleName="{style.tb}">
+        <g:Label ui:field="lbTitle" styleName="{style.lb}"></g:Label>
+
+
+                <table cellpadding="5px" >
+                    <tr><td>名称</td>
+                        <td><g:TextBox ui:field="txtNAME"></g:TextBox></td></tr>
+                    <tr><td>代码</td>
+                        <td><g:TextBox ui:field="txtCODE"></g:TextBox></td></tr>
+                    <tr><td>二进制序号</td>
+                        <td><g:TextBox ui:field="txtBIN"></g:TextBox></td></tr>
+                    <tr><td>方向</td>
+                        <td>
+                            <common:MetaBox catalog="/设备/命令方向" ui:field="metaDirection"></common:MetaBox>
+                        </td></tr>
+                    <tr><td>描述</td>
+                        <td><g:TextBox ui:field="txtDESC"></g:TextBox></td></tr>
+                    <tr>
+                        <td>
+                           <p:PrimaryButton ui:field="btnSave">保存</p:PrimaryButton>
+                        </td>
+                        <td>
+                            <p:PrimaryButton ui:field="btnDelete">删除</p:PrimaryButton>
+                        </td>
+                    </tr>
+                </table>
+
+    </g:HTMLPanel>
+</ui:UiBinder>

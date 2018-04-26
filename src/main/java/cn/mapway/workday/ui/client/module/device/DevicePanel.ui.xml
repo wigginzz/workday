@@ -1,0 +1,32 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:d='urn:import:cn.mapway.workday.ui.client.module.device'
+             xmlns:p='urn:import:cn.mapway.ui.client.widget.common'>
+    <ui:style>
+
+        .left{
+            border-right: #d0d0d0 solid 1px;
+        }
+    </ui:style>
+
+    <g:DockLayoutPanel>
+
+
+        <g:west size="300">
+            <g:ScrollPanel styleName="{style.left}">
+                <d:ProductTree ui:field="tree" />
+            </g:ScrollPanel>
+        </g:west>
+        <g:center>
+            <g:ScrollPanel ui:field="body">
+                <g:HorizontalPanel ui:field="tools">
+                    <p:PrimaryButton ui:field="btnAddDevice">添加设备</p:PrimaryButton>
+                    <p:PrimaryButton ui:field="btnAddAttribute" enabled="false">添加属性</p:PrimaryButton>
+                    <p:PrimaryButton ui:field="btnAddOperation" enabled="false">添加操作</p:PrimaryButton>
+                    <p:PrimaryButton ui:field="btnAddEvent" enabled="false">添加事件</p:PrimaryButton>
+                    <p:PrimaryButton ui:field="btnAddParameter" enabled="false">添加参数</p:PrimaryButton>
+                </g:HorizontalPanel>
+            </g:ScrollPanel>
+        </g:center>
+    </g:DockLayoutPanel>
+</ui:UiBinder>

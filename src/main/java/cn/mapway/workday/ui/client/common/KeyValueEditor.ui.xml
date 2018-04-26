@@ -1,0 +1,15 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:common="urn:import:cn.mapway.ui.client.widget.common">
+    <g:HTMLPanel>
+            <g:HorizontalPanel spacing="15" verticalAlignment="middle">
+                <g:Label>Key:</g:Label>
+                <g:TextBox ui:field="txtKEY"></g:TextBox>
+
+                <g:Label>Value:</g:Label>
+                <g:TextBox ui:field="txtValue"></g:TextBox>
+                <common:PrimaryButton ui:field="btnSave">添加</common:PrimaryButton>
+            </g:HorizontalPanel>
+           <g:FlexTable ui:field="tbl" cellSpacing="5"></g:FlexTable>
+    </g:HTMLPanel>
+</ui:UiBinder>

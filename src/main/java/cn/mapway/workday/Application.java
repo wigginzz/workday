@@ -2,6 +2,8 @@ package cn.mapway.workday;
 
 import cn.ennwifi.webframe.configure.SystemPropertyDefaultsInitializer;
 import cn.mapway.workday.configure.DbConfigure;
+import cn.mapway.workday.configure.UIProperties;
+import org.nutz.lang.Lang;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -13,7 +15,7 @@ import java.util.logging.Logger;
  * workday application.
  */
 @SpringBootApplication
-@EnableConfigurationProperties({DbConfigure.class})
+@EnableConfigurationProperties({DbConfigure.class,UIProperties.class})
 public class Application {
     private static Logger logger = Logger.getLogger("Workday.link application");
 
@@ -21,6 +23,8 @@ public class Application {
      * @param args
      */
     public static void main(String[] args) {
+
+
 
         SystemPropertyDefaultsInitializer initializer = new SystemPropertyDefaultsInitializer();
         initializer.initialize();

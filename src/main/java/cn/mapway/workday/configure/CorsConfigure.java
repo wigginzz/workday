@@ -1,5 +1,10 @@
 package cn.mapway.workday.configure;
 
+import cn.mapway.workday.ui.client.rpc.IWorkdayServer;
+import cn.mapway.workday.ui.server.WorkdayServlet;
+import org.nutz.lang.Lang;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -37,5 +42,15 @@ public class CorsConfigure extends WebMvcConfigurerAdapter {
   //  InterceptorRegistration registration = registry.addInterceptor(interceptor);
   //  registration.addPathPatterns("/admin/**");
     super.addInterceptors(registry);
+  }
+
+  @Bean
+  public ServletRegistrationBean workdayServer () {
+    ServletRegistrationBean srb = new ServletRegistrationBean();
+    WorkdayServlet servlet =new WorkdayServlet();
+    srb.setUrlMappings(Lang.list(WorkdayServlet.DEFAULT_SERVER_PATH));
+    srb.setServlet(servlet);
+    srb.setLoadOnStartup(1);
+    return srb;
   }
 }

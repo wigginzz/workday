@@ -1,0 +1,24 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:p='urn:import:cn.mapway.ui.client.widget.common'>
+    <ui:style>
+        .tb{
+            padding: 10px;
+        }
+    </ui:style>
+    <g:HTMLPanel styleName="{style.tb}">
+        <h2>设备定义</h2>
+        <table cellpadding="5px" >
+            <tr><td>设备名称</td>
+                <td><g:TextBox ui:field="txtNAME"></g:TextBox></td></tr>
+            <tr><td>设备代码</td>
+                <td><g:TextBox ui:field="txtCODE"></g:TextBox></td></tr>
+            <tr><td>设备描述</td>
+                <td><g:TextBox ui:field="txtDESC"></g:TextBox></td></tr>
+            <tr><td colspan="2">
+
+                <p:PrimaryButton ui:field="btnSave">保存</p:PrimaryButton>
+            </td></tr>
+        </table>
+    </g:HTMLPanel>
+</ui:UiBinder>

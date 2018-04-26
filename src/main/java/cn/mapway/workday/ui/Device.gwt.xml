@@ -1,0 +1,24 @@
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0//EN"
+        "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
+<module rename-to="product">
+
+
+    <inherits name="com.google.gwt.user.User" />
+    <inherits name = "cn.mapway.ui.MapwayFrame"></inherits>
+    <inherits name = "cn.ennwifi.webframe.ui.WebFrame"></inherits>
+
+    <generate-with
+            class = "cn.mapway.ui.server.mvc.ModuleFactoryGenerator">
+        <when-type-assignable
+                class = "cn.mapway.ui.client.mvc.ModuleFactory"/>
+    </generate-with>
+
+    <source path="client" />
+    <source path="shared" />
+    <inherits name='com.google.gwt.user.theme.standard.StandardResources' />
+    <inherits name='com.google.gwt.xml.XML' />
+    <inherits name="com.google.gwt.http.HTTP" />
+    <inherits name="com.ksyzt.gwt.Site" />
+    <entry-point class='cn.mapway.workday.ui.client.Device'/>
+
+</module>

@@ -17,4 +17,26 @@ public class MainController {
     public String index() {
         return "index";
     }
+
+    /**
+     * 首页面.
+     *
+     * @return
+     */
+    @RequestMapping(value = "/device")
+    public String device() {
+        return "device";
+    }
+
+    /**
+     * 首页面.
+     *
+     * @return
+     */
+    @RequestMapping(value = "/device/info")
+    public String deviceInfo() {
+        return "dinfo";
+    }
+
+
 }

@@ -1,0 +1,60 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:p='urn:import:cn.mapway.ui.client.widget.common'
+             xmlns:common="urn:import:cn.mapway.workday.ui.client.common"
+             xmlns:meta="urn:import:cn.ennwifi.webframe.ui.client.common">
+
+    <ui:style>
+        .tb{
+            padding: 10px;
+        }
+        .tbl{
+            padding: 0px 20px 0px 20px;
+        }
+    </ui:style>
+
+    <g:HTMLPanel styleName="{style.tb}">
+        <h2>参数定义</h2>
+
+            <g:HorizontalPanel verticalAlignment="top">
+                    <g:HTMLPanel>
+                        <table cellpadding="5px" >
+                            <tr><td>参数名称</td>
+                                <td><g:TextBox ui:field="txtNAME"></g:TextBox></td></tr>
+                            <tr><td>参数代码</td>
+                                <td><g:TextBox ui:field="txtCODE"></g:TextBox></td></tr>
+                            <tr><td>参数二进制序号</td>
+                                <td><g:TextBox ui:field="txtBIN"></g:TextBox></td></tr>
+                            <tr><td>参数最小值</td>
+                                <td><g:TextBox ui:field="txtMIN"></g:TextBox></td></tr>
+                            <tr><td>参数最大值</td>
+                                <td><g:TextBox ui:field="txtMAX"></g:TextBox></td></tr>
+                            <tr><td>参数缺省值</td>
+                                <td><g:TextBox ui:field="txtDEFAULT"></g:TextBox></td></tr>
+                            <tr><td>参数描述</td>
+                                <td><g:TextBox ui:field="txtDESC"></g:TextBox></td></tr>
+                            <tr><td>数据类型</td>
+                            <td>
+                                <meta:MetaBox ui:field="dataType" catalog="/设备/数据类型"></meta:MetaBox>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p:PrimaryButton ui:field="btnSave">保存</p:PrimaryButton>
+                                </td>
+                                <td>
+                                    <p:PrimaryButton ui:field="btnDelete">删除</p:PrimaryButton>
+                                </td>
+                            </tr>
+                        </table>
+                    </g:HTMLPanel>
+                    <g:HTMLPanel styleName="{style.tbl}">
+                        <h3>可选择值列表</h3>
+                        <common:KeyValueEditor ui:field="editor"></common:KeyValueEditor>
+                    </g:HTMLPanel>
+
+            </g:HorizontalPanel>
+
+
+    </g:HTMLPanel>
+</ui:UiBinder>
