@@ -35,7 +35,7 @@ public class ZiroomCommand {
     public static ZiroomCommand controlCommand()
     {
         ZiroomCommand cmd=new ZiroomCommand();
-        cmd.type="DEVICE_CONTROLLER";
+        cmd.type="DEVICE_CONTROL";
         return cmd;
     }
 

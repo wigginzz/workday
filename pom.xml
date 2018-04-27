@@ -242,7 +242,9 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>build-helper-maven-plugin</artifactId>
+
                         <executions>
+
                             <execution>
                                 <id>timestamp-property</id>
                                 <phase>generate-resources</phase>
@@ -291,12 +293,38 @@
                             <warSourceDirectory>src/main/webapp</warSourceDirectory>
                             <webappDirectory>src/main/webapp</webappDirectory>
                             <module>cn.mapway.workday.ui.Device</module>
+                            <force>true</force>
                         </configuration>
                         <executions>
                             <execution>
                                 <goals>
                                     <goal>compile</goal>
                                 </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>
+                                        ${project.build.directory}/${project.artifactId}-${project.version}/WEB-INF/classes/static/product
+                                    </outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>
+                                                ${project.build.directory}/${project.artifactId}-${project.version}/product
+                                            </directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
