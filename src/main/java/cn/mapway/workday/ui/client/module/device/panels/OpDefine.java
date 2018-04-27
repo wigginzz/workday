@@ -115,7 +115,7 @@ public class OpDefine extends MessageComposite {
         if(operator.type==0)
         {
             lbTitle.setText("操作定义");
-            metaDirection.setVisible(true);
+            metaDirection.setEnabled(true);
             metaDirection.setValue(operator.direction+"");
         }
         else

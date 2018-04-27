@@ -79,6 +79,7 @@ public class AttrDefine extends MessageComposite {
         {
             fld=new D_PRODUCT_ATTRIBUTEObj();
             fld.productId=productId;
+            fld.attributeIndex=0;
             isEdit=false;
         }
         else
@@ -98,12 +99,14 @@ public class AttrDefine extends MessageComposite {
     TextBox txtDESC;
     @UiField
     TextBox txtNAME;
-
+    @UiField
+    TextBox txtINDEX;
 
     private void toUI() {
         txtCODE.setValue(attr.code);
         txtDESC.setValue(attr.description);
         txtNAME.setValue(attr.name);
+        txtINDEX.setValue(attr.attributeIndex+"");
     }
 
     private void fromUI()
@@ -111,5 +114,6 @@ public class AttrDefine extends MessageComposite {
         attr.code=txtCODE.getValue();
         attr.description=txtDESC.getValue();
         attr.name=txtNAME.getValue();
+        attr.attributeIndex=Integer.parseInt(txtINDEX.getValue());
     }
 }

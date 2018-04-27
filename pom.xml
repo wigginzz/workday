@@ -289,9 +289,8 @@
                         <configuration>
                             <productionMode>true</productionMode>
                             <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                            <webappDirectory>src/main/resources/static</webappDirectory>
+                            <webappDirectory>src/main/webapp</webappDirectory>
                             <module>cn.mapway.workday.ui.Device</module>
-
                         </configuration>
                         <executions>
                             <execution>

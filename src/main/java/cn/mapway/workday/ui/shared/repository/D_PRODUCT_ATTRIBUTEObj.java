@@ -73,6 +73,17 @@ public final class D_PRODUCT_ATTRIBUTEObj
   @cn.mapway.document.annotation.ApiField(value = "product_id", example = "")
   public Integer productId;
   /**
+   * 字段索引 attribute_index
+   */
+  public static final String FLD_ATTRIBUTE_INDEX = "attribute_index";
+
+  /**
+   * 字段 attribute_index 
+   */
+  @org.nutz.dao.entity.annotation.Column("attribute_index")
+  @cn.mapway.document.annotation.ApiField(value = "attribute_index", example = "")
+  public Integer attributeIndex;
+  /**
    * 返回字段id 
    */
   public Integer getId() {
@@ -133,6 +144,18 @@ public final class D_PRODUCT_ATTRIBUTEObj
     this.productId=productId;
   }
   /**
+   * 返回字段attribute_index 
+   */
+  public Integer getAttributeIndex() {
+    return this.attributeIndex;
+  }
+  /**
+   * 设置字段attribute_index 
+   */
+  public void setAttributeIndex(Integer attributeIndex) {
+    this.attributeIndex=attributeIndex;
+  }
+  /**
    * 获取字id索引
    */
   public static final Integer IDX_ID = 0;
@@ -152,6 +175,10 @@ public final class D_PRODUCT_ATTRIBUTEObj
    * 获取字product_id索引
    */
   public static final Integer IDX_PRODUCT_ID = 4;
+  /**
+   * 获取字attribute_index索引
+   */
+  public static final Integer IDX_ATTRIBUTE_INDEX = 5;
   /**
    * 根据字段名称获取字段的.
    */
@@ -173,7 +200,10 @@ public final class D_PRODUCT_ATTRIBUTEObj
       if (FLD_PRODUCT_ID.equals(fieldName)) {
         return this.productId;
       }
-    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < 5) {
+      if (FLD_ATTRIBUTE_INDEX.equals(fieldName)) {
+        return this.attributeIndex;
+      }
+    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < 6) {
       if (fieldIndex == 0) {
         return this.id;
       }
@@ -188,6 +218,9 @@ public final class D_PRODUCT_ATTRIBUTEObj
       }
       if (fieldIndex == 4) {
         return this.productId;
+      }
+      if (fieldIndex == 5) {
+        return this.attributeIndex;
       }
     } else {
       return null;

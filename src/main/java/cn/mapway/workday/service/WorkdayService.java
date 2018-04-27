@@ -35,9 +35,9 @@ public class WorkdayService {
 
     public ProductInfo products() {
         ProductInfo r=new ProductInfo();
-        r.attributes=getDao().query(D_PRODUCT_ATTRIBUTEObj.class,Cnd.orderBy().asc(D_PRODUCT_ATTRIBUTEObj.FLD_PRODUCT_ID));
-        r.operators=getDao().query(D_ATTRIBUTE_OPERATORObj.class,Cnd.orderBy().asc(D_ATTRIBUTE_OPERATORObj.FLD_ATTRIBUTE_ID));
-        r.parameters=getDao().query(D_OPERATOR_PARAMETERObj.class,Cnd.orderBy().asc(D_OPERATOR_PARAMETERObj.FLD_OPERATOR_ID));
+        r.attributes=getDao().query(D_PRODUCT_ATTRIBUTEObj.class,Cnd.orderBy().asc(D_PRODUCT_ATTRIBUTEObj.FLD_PRODUCT_ID).asc(D_PRODUCT_ATTRIBUTEObj.FLD_ATTRIBUTE_INDEX));
+        r.operators=getDao().query(D_ATTRIBUTE_OPERATORObj.class,Cnd.orderBy().asc(D_ATTRIBUTE_OPERATORObj.FLD_ATTRIBUTE_ID).asc(D_ATTRIBUTE_OPERATORObj.FLD_OPERATOR_INDEX));
+        r.parameters=getDao().query(D_OPERATOR_PARAMETERObj.class,Cnd.orderBy().asc(D_OPERATOR_PARAMETERObj.FLD_OPERATOR_ID).asc(D_OPERATOR_PARAMETERObj.FLD_PARAMETER_INDEX));
         r.products=getDao().query(D_PRODUCT_INFOObj.class,Cnd.orderBy().asc(D_PRODUCT_INFOObj.FLD_ID));
         return r;
     }

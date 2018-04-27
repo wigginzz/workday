@@ -60,13 +60,17 @@ public class KeyValueEditor extends MessageComposite {
         renderData();
     }
 
+    private final static native void removeAtIndex(JsArray array,int index)/*-{
+        array.splice(index,1);
+    }-*/;
+
     ClickHandler deleteItemHandler = new ClickHandler() {
         @Override
         public void onClick(ClickEvent event) {
             IconItem item = (IconItem) event
                     .getSource();
-            KeyValue kv = (KeyValue) item.getData();
-            mData.unshift(kv);
+            int index= (int) item.getData();
+            removeAtIndex(mData,index);
             renderData();
 
             MessageEvent ev=new MessageEvent(MessageEvent.SAVE,toJSON());
@@ -83,7 +87,7 @@ public class KeyValueEditor extends MessageComposite {
             KeyValue kv=mData.get(i);
             IconItem delete = new IconItem();
             delete.setText("删除");
-            delete.setData(kv);
+            delete.setData(i);
             delete.addClickHandler(deleteItemHandler);
             tbl.setText(row, 0, kv.getKey());
             tbl.setText(row, 1, kv.getValue());

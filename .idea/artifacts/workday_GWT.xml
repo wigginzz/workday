@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact name="workday:GWT">
-    <output-path>src/main/resources/static</output-path>
+    <output-path>src/main/webapp</output-path>
     <root id="root">
       <element id="gwt-compiler-output" facet="workday/gwt/GWT" />
     </root>

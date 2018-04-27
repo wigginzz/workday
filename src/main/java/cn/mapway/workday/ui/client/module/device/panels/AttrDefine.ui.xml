@@ -15,6 +15,8 @@
                 <td><g:TextBox ui:field="txtNAME"></g:TextBox></td></tr>
             <tr><td>属性代码</td>
                 <td><g:TextBox ui:field="txtCODE"></g:TextBox></td></tr>
+            <tr><td>属性索引</td>
+                <td><g:TextBox ui:field="txtINDEX"></g:TextBox></td></tr>
             <tr><td>属性描述</td>
                 <td><g:TextBox ui:field="txtDESC"></g:TextBox></td></tr>
             <tr><td >
