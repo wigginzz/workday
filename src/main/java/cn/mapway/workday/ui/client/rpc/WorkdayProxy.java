@@ -26,7 +26,7 @@ public class WorkdayProxy {
             PROXY = GWT.create(IWorkdayServer.class);
 
             ServiceDefTarget t = (ServiceDefTarget) PROXY;
-            t.setServiceEntryPoint(GWT.getModuleBaseURL() + "../" + WorkdayServlet.DEFAULT_SERVER_PATH);
+            t.setServiceEntryPoint(GWT.getModuleBaseURL() + "../workdayServer");
         }
         return PROXY;
     }
