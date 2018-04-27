@@ -1,15 +1,17 @@
 package cn.mapway.workday.ui.client.rpc;
 
 import cn.ennwifi.webframe.ui.shared.module.ServerException;
-import cn.mapway.workday.ui.server.WorkdayServlet;
 import cn.mapway.workday.ui.shared.module.ProductInfo;
-import cn.mapway.workday.ui.shared.repository.*;
+import cn.mapway.workday.ui.shared.repository.D_ATTRIBUTE_OPERATORObj;
+import cn.mapway.workday.ui.shared.repository.D_OPERATOR_PARAMETERObj;
+import cn.mapway.workday.ui.shared.repository.D_PRODUCT_ATTRIBUTEObj;
+import cn.mapway.workday.ui.shared.repository.D_PRODUCT_INFOObj;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import java.util.List;
 
-@RemoteServiceRelativePath(WorkdayServlet.DEFAULT_SERVER_PATH)
+@RemoteServiceRelativePath("/workdayServer")
 public interface IWorkdayServer extends RemoteService {
 
 

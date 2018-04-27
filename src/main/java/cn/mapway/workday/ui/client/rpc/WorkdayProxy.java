@@ -1,6 +1,5 @@
 package cn.mapway.workday.ui.client.rpc;
 
-import cn.mapway.workday.ui.server.WorkdayServlet;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
