@@ -293,7 +293,7 @@
                             <warSourceDirectory>src/main/webapp</warSourceDirectory>
                             <webappDirectory>src/main/webapp</webappDirectory>
                             <module>cn.mapway.workday.ui.Device</module>
-                            <force>true</force>
+                             <force>true</force>
                         </configuration>
                         <executions>
                             <execution>
@@ -320,7 +320,7 @@
                                     <resources>
                                         <resource>
                                             <directory>
-                                                ${project.build.directory}/${project.artifactId}-${project.version}/product
+                                                src/main/webapp/product
                                             </directory>
                                         </resource>
                                     </resources>
