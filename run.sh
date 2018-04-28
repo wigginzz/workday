@@ -3,16 +3,13 @@
 #启动方法
 start(){
  now=`date "+%Y%m%d%H%M%S"`
- exec java -Xms128m -Xmx2048m -jar ./target/workday-1.0-SNAPSHOT.war 5 > /var/log/workday.log &
- #java -Xms128m -Xmx2048m -jar cmpp.jar 5 > log.log &
- #tail -f result.log
+ echo $$ > /run/workday/workday.pid
+ exec java -Xms256m -Xmx2048m -jar ./target/workday-1.0-SNAPSHOT.war 5 > /var/log/workday.log &
+ tail -f result.log
 }
 #停止方法
 stop(){
- ps -ef|grep java|awk '{print $2}'|while read pid
- do
-    kill -9 $pid
- done
+ kill -9 /run/workday/workday.pid
 }
 
 case "$1" in
