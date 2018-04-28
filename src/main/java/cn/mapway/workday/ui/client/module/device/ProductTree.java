@@ -50,18 +50,17 @@ public class ProductTree extends LocalTree implements OpenHandler<TreeItem>, Clo
 
         List<D_PRODUCT_INFOObj> products = mData.getAllProducts();
 
+        int index=1;
         for (D_PRODUCT_INFOObj p : products) {
-            renderProduct(p);
-
+            renderProduct(index++,p);
         }
-
     }
 
-    private TreeItem renderProduct(D_PRODUCT_INFOObj p) {
+    private TreeItem renderProduct(int index,D_PRODUCT_INFOObj p) {
         TreeItem item = new TreeItem();
         IconItem ri = new IconItem();
         ri.setIcon(WorkdayResource.get().device(),16,16);
-        ri.setText(p.name + "[" + p.code + "]");
+        ri.setText(index+"."+ p.name + "[" + p.code + "]");
         item.setWidget(ri);
         item.setUserObject(p);
         this.addItem(item);
@@ -78,7 +77,7 @@ public class ProductTree extends LocalTree implements OpenHandler<TreeItem>, Clo
         TreeItem item = new TreeItem();
         IconItem ri = new IconItem();
         ri.setIcon(WorkdayResource.get().attribute(),16,16);
-        ri.setText(a.name + "[" + a.code + "]");
+        ri.setText(a.attributeIndex+"."+a.name + "[" + a.code + "]");
         item.setWidget(ri);
         item.setUserObject(a);
 
@@ -108,7 +107,7 @@ public class ProductTree extends LocalTree implements OpenHandler<TreeItem>, Clo
         {
             ri.setIcon(WorkdayResource.get().event(), 16, 16);
         }
-        ri.setText(op.name + "[" + op.code + "]");
+        ri.setText(op.operatorIndex+"."+op.name + "[" + op.code + "]");
         item.setWidget(ri);
         item.setUserObject(op);
         itemParent.addItem(item);
@@ -124,7 +123,7 @@ public class ProductTree extends LocalTree implements OpenHandler<TreeItem>, Clo
         TreeItem item = new TreeItem();
         IconItem ri = new IconItem();
         ri.setIcon(WorkdayResource.get().parameter(),16,16);
-        ri.setText(p.name + "[" + p.code + "]");
+        ri.setText(p.parameterIndex+"."+ p.name + "[" + p.code + "]");
         item.setWidget(ri);
         item.setUserObject(p);
         item.setState(isOpen("pa_" + p.getId()));
