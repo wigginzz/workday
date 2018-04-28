@@ -1,6 +1,13 @@
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <g:HTMLPanel>
-             powered by webframe@mapway.cn
+    <ui:style>
+        .box{
+            margin: 20px;
+            border: solid 1px #f0f0f0;
+            border-radius: 10px;
+        }
+    </ui:style>
+    <g:HTMLPanel ui:field="body" styleName="{style.box}">
+
     </g:HTMLPanel>
 </ui:UiBinder>

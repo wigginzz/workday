@@ -6,6 +6,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 
 import java.util.List;
+import java.util.Map;
 
 public interface IWorkdayServerAsync {
 
@@ -35,4 +36,6 @@ public interface IWorkdayServerAsync {
     void getProductAttributes(Integer productId, AsyncCallback<List<D_PRODUCT_ATTRIBUTEObj>> async);
 
     void products(AsyncCallback<ProductInfo> async);
+
+    void versions(AsyncCallback<Map<String, String>> async);
 }

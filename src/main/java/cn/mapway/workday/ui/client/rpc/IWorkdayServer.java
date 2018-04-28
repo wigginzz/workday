@@ -10,6 +10,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import java.util.List;
+import java.util.Map;
 
 @RemoteServiceRelativePath("/workdayServer")
 public interface IWorkdayServer extends RemoteService {
@@ -35,4 +36,5 @@ public interface IWorkdayServer extends RemoteService {
     boolean deleteOperatorParameter(Integer parameterId) throws ServerException;
     D_OPERATOR_PARAMETERObj updateOrSaveOperatorParameters(D_OPERATOR_PARAMETERObj operatorParameterObj) throws ServerException;
 
+    Map<String,String> versions();
 }

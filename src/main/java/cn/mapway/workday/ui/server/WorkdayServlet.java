@@ -2,16 +2,21 @@ package cn.mapway.workday.ui.server;
 
 import cn.ennwifi.webframe.ui.shared.module.ServerException;
 import cn.mapway.workday.service.WorkdayService;
+import cn.mapway.workday.tools.Jsps;
 import cn.mapway.workday.tools.Springs;
 import cn.mapway.workday.ui.client.rpc.IWorkdayServer;
 import cn.mapway.workday.ui.shared.module.ProductInfo;
-import cn.mapway.workday.ui.shared.repository.*;
+import cn.mapway.workday.ui.shared.repository.D_ATTRIBUTE_OPERATORObj;
+import cn.mapway.workday.ui.shared.repository.D_OPERATOR_PARAMETERObj;
+import cn.mapway.workday.ui.shared.repository.D_PRODUCT_ATTRIBUTEObj;
+import cn.mapway.workday.ui.shared.repository.D_PRODUCT_INFOObj;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import jdk.nashorn.internal.runtime.WithObject;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WorkdayServlet extends RemoteServiceServlet implements IWorkdayServer {
 
@@ -156,5 +161,13 @@ public class WorkdayServlet extends RemoteServiceServlet implements IWorkdayServ
 
         return operatorParameterObj;
     }
+
+    @Override
+    public Map<String, String> versions() {
+        Map<String,String> versions=new HashMap<>();
+        versions.put("版本信息",Jsps.version());
+        return versions;
+    }
+
 
 }
