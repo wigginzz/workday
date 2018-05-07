@@ -126,11 +126,13 @@ public class ParameterDefine extends MessageComposite {
     @UiField
     TextBox txtMIN;
 
+    @UiField
+    TextBox txtSTEP;
+    @UiField
+    TextBox txtUNIT;
 
     @UiField
     TextBox txtDEFAULT;
-
-
     @UiField
     MetaBox dataType;
 
@@ -143,6 +145,8 @@ public class ParameterDefine extends MessageComposite {
         txtMIN.setValue(parameter.minValue+"");
         dataType.setValue(parameter.dataType+"");
         txtDEFAULT.setValue(parameter.defaultValue);
+        txtSTEP.setValue(parameter.getStep()==null?"1":parameter.getStep().toString());
+        txtUNIT.setValue(parameter.getUnit());
         if(parameter.getId()==null)
         {
             btnDelete.setEnabled(false);
@@ -151,10 +155,7 @@ public class ParameterDefine extends MessageComposite {
         {
             btnDelete.setEnabled(true);
         }
-
         editor.edit(parameter.options);
-
-
     }
 
     private void fromUI() {
@@ -166,6 +167,8 @@ public class ParameterDefine extends MessageComposite {
         parameter.parameterIndex = Integer.parseInt(txtBIN.getValue());
         parameter.defaultValue=txtDEFAULT.getValue();
         parameter.setDataType(Integer.parseInt(dataType.getValue()));
+        parameter.setUnit(txtUNIT.getValue());
+        parameter.setStep(Integer.parseInt(txtSTEP.getValue()));
     }
 
 }

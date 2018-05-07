@@ -106,6 +106,17 @@ public final class D_ATTRIBUTE_OPERATORObj
   @cn.mapway.document.annotation.ApiField(value = "命令的方向0下发命令1命令响应", example = "")
   public Integer direction;
   /**
+   * 字段索引用户是否可见 visible
+   */
+  public static final String FLD_VISIBLE = "visible";
+
+  /**
+   * 字段 visible 用户是否可见
+   */
+  @org.nutz.dao.entity.annotation.Column("visible")
+  @cn.mapway.document.annotation.ApiField(value = "用户是否可见", example = "")
+  public Integer visible;
+  /**
    * 返回字段id 
    */
   public Integer getId() {
@@ -202,6 +213,18 @@ public final class D_ATTRIBUTE_OPERATORObj
     this.direction=direction;
   }
   /**
+   * 返回字段visible 用户是否可见
+   */
+  public Integer getVisible() {
+    return this.visible;
+  }
+  /**
+   * 设置字段visible 用户是否可见
+   */
+  public void setVisible(Integer visible) {
+    this.visible=visible;
+  }
+  /**
    * 获取字id索引
    */
   public static final Integer IDX_ID = 0;
@@ -234,6 +257,10 @@ public final class D_ATTRIBUTE_OPERATORObj
    */
   public static final Integer IDX_DIRECTION = 7;
   /**
+   * 获取字visible索引
+   */
+  public static final Integer IDX_VISIBLE = 8;
+  /**
    * 根据字段名称获取字段的.
    */
   @Override
@@ -263,7 +290,10 @@ public final class D_ATTRIBUTE_OPERATORObj
       if (FLD_DIRECTION.equals(fieldName)) {
         return this.direction;
       }
-    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < 8) {
+      if (FLD_VISIBLE.equals(fieldName)) {
+        return this.visible;
+      }
+    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < 9) {
       if (fieldIndex == 0) {
         return this.id;
       }
@@ -287,6 +317,9 @@ public final class D_ATTRIBUTE_OPERATORObj
       }
       if (fieldIndex == 7) {
         return this.direction;
+      }
+      if (fieldIndex == 8) {
+        return this.visible;
       }
     } else {
       return null;

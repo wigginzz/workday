@@ -84,6 +84,17 @@ public final class D_PRODUCT_ATTRIBUTEObj
   @cn.mapway.document.annotation.ApiField(value = "attribute_index", example = "")
   public Integer attributeIndex;
   /**
+   * 字段索引是否用户可见 visible
+   */
+  public static final String FLD_VISIBLE = "visible";
+
+  /**
+   * 字段 visible 是否用户可见
+   */
+  @org.nutz.dao.entity.annotation.Column("visible")
+  @cn.mapway.document.annotation.ApiField(value = "是否用户可见", example = "")
+  public Integer visible;
+  /**
    * 返回字段id 
    */
   public Integer getId() {
@@ -156,6 +167,18 @@ public final class D_PRODUCT_ATTRIBUTEObj
     this.attributeIndex=attributeIndex;
   }
   /**
+   * 返回字段visible 是否用户可见
+   */
+  public Integer getVisible() {
+    return this.visible;
+  }
+  /**
+   * 设置字段visible 是否用户可见
+   */
+  public void setVisible(Integer visible) {
+    this.visible=visible;
+  }
+  /**
    * 获取字id索引
    */
   public static final Integer IDX_ID = 0;
@@ -180,6 +203,10 @@ public final class D_PRODUCT_ATTRIBUTEObj
    */
   public static final Integer IDX_ATTRIBUTE_INDEX = 5;
   /**
+   * 获取字visible索引
+   */
+  public static final Integer IDX_VISIBLE = 6;
+  /**
    * 根据字段名称获取字段的.
    */
   @Override
@@ -203,7 +230,10 @@ public final class D_PRODUCT_ATTRIBUTEObj
       if (FLD_ATTRIBUTE_INDEX.equals(fieldName)) {
         return this.attributeIndex;
       }
-    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < 6) {
+      if (FLD_VISIBLE.equals(fieldName)) {
+        return this.visible;
+      }
+    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < 7) {
       if (fieldIndex == 0) {
         return this.id;
       }
@@ -221,6 +251,9 @@ public final class D_PRODUCT_ATTRIBUTEObj
       }
       if (fieldIndex == 5) {
         return this.attributeIndex;
+      }
+      if (fieldIndex == 6) {
+        return this.visible;
       }
     } else {
       return null;

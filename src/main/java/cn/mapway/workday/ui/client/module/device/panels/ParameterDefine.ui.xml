@@ -29,6 +29,10 @@
                                 <td><g:TextBox ui:field="txtMIN"></g:TextBox></td></tr>
                             <tr><td>参数最大值</td>
                                 <td><g:TextBox ui:field="txtMAX"></g:TextBox></td></tr>
+                            <tr><td>步进值</td>
+                                <td><g:TextBox ui:field="txtSTEP"></g:TextBox></td></tr>
+                            <tr><td>单位</td>
+                                <td><g:TextBox ui:field="txtUNIT"></g:TextBox></td></tr>
                             <tr><td>参数缺省值</td>
                                 <td><g:TextBox ui:field="txtDEFAULT"></g:TextBox></td></tr>
                             <tr><td>参数描述</td>

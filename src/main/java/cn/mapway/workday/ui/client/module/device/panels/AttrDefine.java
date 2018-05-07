@@ -10,6 +10,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.ksyzt.gwt.client.common.MessageComposite;
@@ -102,12 +103,16 @@ public class AttrDefine extends MessageComposite {
     @UiField
     TextBox txtINDEX;
 
+    @UiField
+    CheckBox checkVisible;
 
     private void toUI() {
         txtCODE.setValue(attr.code);
         txtDESC.setValue(attr.description);
         txtNAME.setValue(attr.name);
         txtINDEX.setValue(attr.attributeIndex+"");
+        checkVisible.setValue(attr.getVisible()!=null && attr.getVisible()>0);
+
     }
 
     private void fromUI()
@@ -116,5 +121,6 @@ public class AttrDefine extends MessageComposite {
         attr.description=txtDESC.getValue();
         attr.name=txtNAME.getValue();
         attr.attributeIndex=Integer.parseInt(txtINDEX.getValue());
+        attr.setVisible(checkVisible.getValue()?1:0);
     }
 }

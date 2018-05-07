@@ -139,6 +139,28 @@ public final class D_OPERATOR_PARAMETERObj
   @cn.mapway.document.annotation.ApiField(value = "最大值", example = "")
   public Float maxValue;
   /**
+   * 字段索引单位 unit
+   */
+  public static final String FLD_UNIT = "unit";
+
+  /**
+   * 字段 unit 单位
+   */
+  @org.nutz.dao.entity.annotation.Column("unit")
+  @cn.mapway.document.annotation.ApiField(value = "单位", example = "")
+  public String unit;
+  /**
+   * 字段索引步进数值 step
+   */
+  public static final String FLD_STEP = "step";
+
+  /**
+   * 字段 step 步进数值
+   */
+  @org.nutz.dao.entity.annotation.Column("step")
+  @cn.mapway.document.annotation.ApiField(value = "步进数值", example = "")
+  public Integer step;
+  /**
    * 返回字段id 
    */
   public Integer getId() {
@@ -271,6 +293,30 @@ public final class D_OPERATOR_PARAMETERObj
     this.maxValue=maxValue;
   }
   /**
+   * 返回字段unit 单位
+   */
+  public String getUnit() {
+    return this.unit;
+  }
+  /**
+   * 设置字段unit 单位
+   */
+  public void setUnit(String unit) {
+    this.unit=unit;
+  }
+  /**
+   * 返回字段step 步进数值
+   */
+  public Integer getStep() {
+    return this.step;
+  }
+  /**
+   * 设置字段step 步进数值
+   */
+  public void setStep(Integer step) {
+    this.step=step;
+  }
+  /**
    * 获取字id索引
    */
   public static final Integer IDX_ID = 0;
@@ -315,6 +361,14 @@ public final class D_OPERATOR_PARAMETERObj
    */
   public static final Integer IDX_MAX_VALUE = 10;
   /**
+   * 获取字unit索引
+   */
+  public static final Integer IDX_UNIT = 11;
+  /**
+   * 获取字step索引
+   */
+  public static final Integer IDX_STEP = 12;
+  /**
    * 根据字段名称获取字段的.
    */
   @Override
@@ -353,7 +407,13 @@ public final class D_OPERATOR_PARAMETERObj
       if (FLD_MAX_VALUE.equals(fieldName)) {
         return this.maxValue;
       }
-    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < 11) {
+      if (FLD_UNIT.equals(fieldName)) {
+        return this.unit;
+      }
+      if (FLD_STEP.equals(fieldName)) {
+        return this.step;
+      }
+    } else if (fieldIndex != null && fieldIndex >= 0 && fieldIndex < 13) {
       if (fieldIndex == 0) {
         return this.id;
       }
@@ -386,6 +446,12 @@ public final class D_OPERATOR_PARAMETERObj
       }
       if (fieldIndex == 10) {
         return this.maxValue;
+      }
+      if (fieldIndex == 11) {
+        return this.unit;
+      }
+      if (fieldIndex == 12) {
+        return this.step;
       }
     } else {
       return null;
