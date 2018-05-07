@@ -26,8 +26,5 @@ public class WorkdayController {
     public CatalogsResp catalogs(@RequestBody CatalogsReq req) {
         CatalogsResp r = workdayService.catalogs(req);
         return r;
-
     }
-
-
 }

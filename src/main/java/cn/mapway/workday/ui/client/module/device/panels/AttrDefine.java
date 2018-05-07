@@ -102,6 +102,7 @@ public class AttrDefine extends MessageComposite {
     @UiField
     TextBox txtINDEX;
 
+
     private void toUI() {
         txtCODE.setValue(attr.code);
         txtDESC.setValue(attr.description);

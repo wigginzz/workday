@@ -115,40 +115,7 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>smarthome</id>
-            <url>http://mvn.ziroom.com/smarthome_release</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>public</id>
-            <url>http://mvn.ziroom.com/public</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>smarthome</id>
-            <url>http://mvn.ziroom.com/smarthome_release</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
+
 
     <profiles>
         <profile>
