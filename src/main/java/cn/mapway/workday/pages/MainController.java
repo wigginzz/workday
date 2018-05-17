@@ -38,5 +38,13 @@ public class MainController {
         return "dinfo";
     }
 
-
+    /**
+     * 首页面.
+     *
+     * @return
+     */
+    @RequestMapping(value = "/test")
+    public String test() {
+        return "test";
+    }
 }

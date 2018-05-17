@@ -1,0 +1,66 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:device="urn:import:cn.mapway.workday.ui.client.module.device"
+             xmlns:common="urn:import:cn.mapway.ui.client.widget.common">
+    <ui:style>
+        .left {
+            border-right: solid 1px #e0e0e0;
+        }
+
+        .b {
+            font-weight: bold;
+        }
+
+        .tools {
+            background-color: #f0f0f0;
+        }
+    </ui:style>
+    <g:DockLayoutPanel>
+        <g:west size="300">
+            <g:ScrollPanel styleName="{style.left}">
+                <device:ProductTree ui:field="tree"></device:ProductTree>
+            </g:ScrollPanel>
+        </g:west>
+        <g:center>
+            <g:SplitLayoutPanel>
+                <g:west size="400">
+                    <g:DockLayoutPanel>
+                        <g:north size="50">
+                            <g:HorizontalPanel spacing="4" width="100%" height="50px" verticalAlignment="middle">
+                                <g:Label styleName="{style.b}">发送主题</g:Label>
+                                <g:cell horizontalAlignment="left">
+                                    <g:TextBox ui:field="txtPUB" width="95%"></g:TextBox>
+                                </g:cell>
+                                <g:HorizontalPanel ui:field="tools">
+                                    <common:PrimaryButton ui:field="btnClear">清空</common:PrimaryButton>
+                                </g:HorizontalPanel>
+
+                            </g:HorizontalPanel>
+                        </g:north>
+
+                        <g:south size="50">
+                            <g:HorizontalPanel styleName="{style.tools}" width="100%" height="50px"
+                                               verticalAlignment="middle"
+                                               horizontalAlignment="center">
+                                <common:PrimaryButton ui:field="btnSender" width="200px">发送</common:PrimaryButton>
+                            </g:HorizontalPanel>
+                        </g:south>
+                        <g:center>
+                            <g:HorizontalPanel spacing="10" height="100%" width="100%">
+                                <g:TextArea ui:field="txtPAYLOAD" width="98%" height="100%"
+                                ></g:TextArea>
+                            </g:HorizontalPanel>
+                        </g:center>
+                    </g:DockLayoutPanel>
+                </g:west>
+                <g:center>
+                    <g:ScrollPanel>
+                       <g:VerticalPanel ui:field="out">
+
+                       </g:VerticalPanel>
+                    </g:ScrollPanel>
+                </g:center>
+            </g:SplitLayoutPanel>
+        </g:center>
+    </g:DockLayoutPanel>
+</ui:UiBinder>

@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.mapway</groupId>
+
     <artifactId>workday</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
@@ -12,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <mapway.version>2.0.5-SNAPSHOT</mapway.version>
+        <mapway.version>2.0.8</mapway.version>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -98,11 +99,18 @@
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.nutz</groupId>
             <artifactId>nutz</artifactId>
             <version>1.r.60</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
         <dependency>
             <groupId>cn.mapway</groupId>
             <artifactId>mapway-web-frame</artifactId>
@@ -113,11 +121,52 @@
             <artifactId>prettytime</artifactId>
             <version>3.2.7.Final</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.25.Final</version>
+        </dependency>
+
+
     </dependencies>
 
-
-
     <profiles>
+
+        <profile>
+            <id>gen-connector</id>
+            <build>
+                <plugins>
+                    <plugin>
+
+                        <groupId>cn.mapway</groupId>
+                        <artifactId>mapway-maven-plugin</artifactId>
+                        <version>${mapway.version}</version>
+                        <executions>
+                            <execution>
+                                <id>genapi</id>
+                                <goals>
+                                    <goal>genconnector</goal>
+                                </goals>
+                                <inherited>false</inherited>
+                                <configuration>
+                                    <!--API文档路径-->
+                                    <apiUrl>http://zlink-api.t.ziroom.com/doc/data</apiUrl>
+                                    <!--类文件存储的路径-->
+                                    <path>${project.basedir}/src/main/java/</path>
+                                    <!--输出的Java类名称-->
+                                    <className>LinkConnector</className>
+                                    <!--输出的Java类所在的包名称-->
+                                    <packageName>com.ziroom.iot.connector</packageName>
+                                    <!--连接器支持类型 java gwt -->
+                                    <contype>java</contype>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <profile>
             <id>gen</id>
             <build>
@@ -258,9 +307,9 @@
                         <configuration>
                             <productionMode>true</productionMode>
                             <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                            <webappDirectory>src/main/webapp</webappDirectory>
+                            <webappDirectory>src/main/resources/static/</webappDirectory>
                             <module>cn.mapway.workday.ui.Device</module>
-                             <force>true</force>
+                            <force>true</force>
                         </configuration>
                         <executions>
                             <execution>
@@ -270,31 +319,7 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-resources-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>copy-resources</id>
-                                <phase>prepare-package</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>
-                                        ${project.build.directory}/${project.artifactId}-${project.version}/WEB-INF/classes/static/product
-                                    </outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>
-                                                src/main/webapp/product
-                                            </directory>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
+
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>

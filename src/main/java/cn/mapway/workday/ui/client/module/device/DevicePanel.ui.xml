@@ -10,8 +10,6 @@
     </ui:style>
 
     <g:DockLayoutPanel>
-
-
         <g:west size="300">
             <g:ScrollPanel styleName="{style.left}">
                 <d:ProductTree ui:field="tree" />

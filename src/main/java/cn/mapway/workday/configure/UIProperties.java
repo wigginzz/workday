@@ -3,7 +3,7 @@ package cn.mapway.workday.configure;
 import cn.ennwifi.webframe.ui.shared.module.ClientConfigure;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "ui")
+
 public class UIProperties implements ClientConfigure {
     private String imagePrefix;
     private String imageUploadProxyUrl;
