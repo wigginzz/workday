@@ -171,23 +171,6 @@
             <id>gen</id>
             <build>
                 <plugins>
-                    <!--解决控制台乱码-->
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
-                        </configuration>
-                        <!-- mvn spring-boot:repackage -->
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>repackage</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
                     <plugin>
                         <groupId>cn.mapway</groupId>
                         <artifactId>mapway-maven-plugin</artifactId>
@@ -217,6 +200,24 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <!--解决控制台乱码-->
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+                        </configuration>
+                        <!-- mvn spring-boot:repackage -->
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>repackage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+
                 </plugins>
             </build>
         </profile>
@@ -319,6 +320,34 @@
                             </execution>
                         </executions>
                     </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/WEB-INF/classes/static
+                                    </outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>
+                                                ${project.basedir}/src/main/resources/static/product
+                                            </directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+
+                        </executions>
+                    </plugin>
+
 
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
