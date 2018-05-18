@@ -15,7 +15,7 @@
     <title>Title</title>
     <base href="<%=basePath%>">
     <link href="css/ui.css" rel="stylesheet" type="text/css">
-    <script src="mapway/product/product.nocache.js?r=<%=r%>" language="JavaScript"></script>
+    <script src="product/product.nocache.js?r=<%=r%>" language="JavaScript"></script>
 
 </head>
 <body>
