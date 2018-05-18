@@ -1,5 +1,7 @@
 package cn.mapway.workday.ui.client.rpc;
 
+import cn.mapway.workday.ui.shared.module.ZiroomMessage;
+import cn.mapway.workday.ui.shared.module.DeviceInformation;
 import cn.mapway.workday.ui.shared.module.ProductInfo;
 import cn.mapway.workday.ui.shared.repository.*;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -38,4 +40,8 @@ public interface IWorkdayServerAsync {
     void products(AsyncCallback<ProductInfo> async);
 
     void versions(AsyncCallback<Map<String, String>> async);
+
+    void getAllDevices(AsyncCallback<List<DeviceInformation>> async);
+
+    void sendMessage(String chanelId, ZiroomMessage message, AsyncCallback<Void> async);
 }

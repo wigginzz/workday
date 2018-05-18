@@ -1,6 +1,8 @@
 package cn.mapway.workday.ui.client.rpc;
 
 import cn.ennwifi.webframe.ui.shared.module.ServerException;
+import cn.mapway.workday.ui.shared.module.ZiroomMessage;
+import cn.mapway.workday.ui.shared.module.DeviceInformation;
 import cn.mapway.workday.ui.shared.module.ProductInfo;
 import cn.mapway.workday.ui.shared.repository.D_ATTRIBUTE_OPERATORObj;
 import cn.mapway.workday.ui.shared.repository.D_OPERATOR_PARAMETERObj;
@@ -37,4 +39,7 @@ public interface IWorkdayServer extends RemoteService {
     D_OPERATOR_PARAMETERObj updateOrSaveOperatorParameters(D_OPERATOR_PARAMETERObj operatorParameterObj) throws ServerException;
 
     Map<String,String> versions();
+
+    List<DeviceInformation> getAllDevices() throws ServerException;
+    void sendMessage(String chanelId, ZiroomMessage message) throws ServerException;
 }

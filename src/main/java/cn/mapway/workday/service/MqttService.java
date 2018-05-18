@@ -81,7 +81,7 @@ public class MqttService implements MqttCallback {
      */
 
     public void publish(String topic, String content) {
-        log.info("Publishing message: " + content);
+
         MqttMessage message = new MqttMessage(content.getBytes());
         message.setQos(qos);
         try {
@@ -89,7 +89,7 @@ public class MqttService implements MqttCallback {
         } catch (MqttException e) {
             log.error("mqtt publish error", e);
         }
-        log.info("Message:" + content + " published");
+
     }
 
     @Override

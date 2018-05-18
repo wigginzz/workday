@@ -25,18 +25,16 @@
             <g:SplitLayoutPanel>
                 <g:west size="400">
                     <g:DockLayoutPanel>
-                        <g:north size="50">
-                            <g:HorizontalPanel spacing="4" width="100%" height="50px" verticalAlignment="middle">
-                                <g:Label styleName="{style.b}">发送主题</g:Label>
-                                <g:cell horizontalAlignment="left">
-                                    <g:TextBox ui:field="txtPUB" width="95%"></g:TextBox>
-                                </g:cell>
+                        <g:north size="40">
+                            <g:HorizontalPanel spacing="4" width="100%" height="40px" verticalAlignment="middle">
+                                <g:Label styleName="{style.b}" ui:field="lbDevices">选择设备</g:Label>
+                                <g:ListBox ui:field="ddlDevices"></g:ListBox>
                                 <g:HorizontalPanel ui:field="tools">
                                     <common:PrimaryButton ui:field="btnClear">清空</common:PrimaryButton>
                                 </g:HorizontalPanel>
-
                             </g:HorizontalPanel>
                         </g:north>
+
 
                         <g:south size="50">
                             <g:HorizontalPanel styleName="{style.tools}" width="100%" height="50px"
