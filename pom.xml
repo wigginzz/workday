@@ -333,7 +333,7 @@
                                     <goal>copy-resources</goal>
                                 </goals>
                                 <configuration>
-                                    <outputDirectory>${project.build.directory}/WEB-INF/classes/static
+                                    <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/WEB-INF/classes/static/product
                                     </outputDirectory>
                                     <resources>
                                         <resource>
