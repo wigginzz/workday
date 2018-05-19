@@ -54,12 +54,18 @@ public class ZiroomPacket {
 
 
     public static final ZiroomMessage decode(ByteBuf buf) throws UnsupportedEncodingException {
-        byte byte1 = buf.getByte(0);
+	ZiroomMessage msg = new ZiroomMessage();
+        if((buf.writerIndex() - buf.readerIndex()) < 4)
+        {
+	    msg = ZiroomMessage.deviceUnknownMessage("length must more than 4 bytes");
+	    return msg;
+	}
+		
+	byte byte1 = buf.getByte(0);
         byte byte2 = buf.getByte(1);
         byte byte3 = buf.getByte(2);
         byte byte4 = buf.getByte(3);
 
-        ZiroomMessage msg = new ZiroomMessage();
 
         if (byte1 == 0xFF && byte2 == 0xFF && byte3 == 0xFF && byte4 == 0xFF) {
             //这是一个设备信息上报数据包
@@ -78,6 +84,7 @@ public class ZiroomPacket {
                 sb.append(String.format(" %02x", (int) (byte2 & 0XFF)));
                 sb.append(String.format(" %02x", (int) (byte3 & 0XFF)));
                 sb.append(String.format(" %02x", (int) (byte4 & 0XFF)));
+                buf.readerIndex(4);
                 while (buf.isReadable()) {
                     byte b = buf.readByte();
                     sb.append(String.format(" %02x", (int) (b & 0XFF)));
