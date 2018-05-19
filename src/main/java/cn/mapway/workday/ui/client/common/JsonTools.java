@@ -9,7 +9,7 @@ public class JsonTools {
             PADDING = '    ';
         options = {};
         options.newlineAfterColonIfBeforeBraceOrBracket = (options.newlineAfterColonIfBeforeBraceOrBracket === true) ? true : false;
-        options.spaceAfterColon = (options.spaceAfterColon === false) ? false : true;
+        options.spaceAfterColon = false;
 
         // add newline before and after curly braces
         reg = /([\{\}])/g;
