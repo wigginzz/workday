@@ -89,8 +89,8 @@ public class ZiroomMessage implements IsSerializable {
                 .append("\"data\":[");
         for (int i = 0; i < data.size(); i++) {
             DataValue d = data.get(i);
-            sb.append("{\"k\":").append(d.k).append("\",");
-            sb.append("\"v\":").append(d.v).append("\"}");
+            sb.append("{\"k\":\"").append(d.k).append("\",");
+            sb.append("\"v\":\"").append(d.v).append("\"}");
         }
         sb.append("]")
                 .append("}");
