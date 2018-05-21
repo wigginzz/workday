@@ -8,6 +8,7 @@ import java.util.List;
 
 public class ZiroomMessage implements IsSerializable {
 
+	public final static String DEVICE_INFO_QUERY = "DEVICE_INFO_QUERY";
     public final static String DEVICE_INFO_REPORT = "DEVICE_INFO_REPORT";
     public final static String DEVICE_META = "DEVICE_META";
     public final static String DEVICE_CONNECT = "DEVICE_CONNECT";
@@ -57,7 +58,7 @@ public class ZiroomMessage implements IsSerializable {
 
     public static ZiroomMessage deviceQueryMessage() {
         ZiroomMessage msg = new ZiroomMessage();
-        msg.type = "DEVICE_INFO_QUERY";
+        msg.type = DEVICE_INFO_QUERY;
         return msg;
     }
 

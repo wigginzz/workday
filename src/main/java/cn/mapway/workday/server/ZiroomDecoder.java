@@ -5,11 +5,14 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import org.nutz.json.Json;
+import org.nutz.json.JsonFormat;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import cn.mapway.workday.ui.server.ZiroomPacket;
+
 
 /**
  * Ziroom message decoder
@@ -45,6 +48,9 @@ public class ZiroomDecoder extends ByteToMessageDecoder {
                 msg.attribute = channelHandlerContext.channel().id().asShortText();
                 list.add(msg);
                 log.info("got a message package " + Json.toJson(msg));
+				ZiroomMessage zmsg = ZiroomMessage.deviceQueryMessage();
+                log.info("send data to  " + Json.toJson(zmsg, JsonFormat.compact()));
+                channelHandlerContext.writeAndFlush(ZiroomPacket.encode(zmsg));
                 break;
             case PACKAGE_BAD:
                 //格式不正确
