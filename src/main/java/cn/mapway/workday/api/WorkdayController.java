@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+
 /**
  * zjs.
  */
@@ -23,7 +26,17 @@ public class WorkdayController {
 
     @Doc(value = "所有目录")
     @RequestMapping(value = "/catalogs", method = {RequestMethod.POST})
-    public CatalogsResp catalogs(@RequestBody CatalogsReq req) {
+    public CatalogsResp catalogs(@RequestBody CatalogsReq req, HttpServletRequest request) {
+
+        Enumeration<String> headerNames = request.getHeaderNames();
+
+        while (headerNames.hasMoreElements()) {
+            String key = headerNames.nextElement();
+            String v = request.getHeader(key);
+
+            System.out.printf("%s:%s\r\n", key, v);
+        }
+
         CatalogsResp r = workdayService.catalogs(req);
         return r;
     }

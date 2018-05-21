@@ -8,17 +8,26 @@ import java.util.List;
 
 public class ZiroomMessage implements IsSerializable {
 
+    public final static String DEVICE_INFO_REPORT = "DEVICE_INFO_REPORT";
+    public final static String DEVICE_META = "DEVICE_META";
+    public final static String DEVICE_CONNECT = "DEVICE_CONNECT";
+    public final static String DEVICE_DISCONNECT = "DEVICE_DISCONNECT";
+    public final static String DEVICE_UNKNOWN = "DEVICE_UNKNOWN";
+    public final static String DEVICE_CONTROL = "DEVICE_CONTROL";
+    public final static String DEVICE_CONTROL_RESP = "DEVICE_CONTROL_RESP";
+
+
     public static ZiroomMessage deviceReportMessage(String channelid, String mac) {
         ZiroomMessage msg = new ZiroomMessage();
-        msg.type = "DEVICE_INFO_REPORT";
+        msg.type = DEVICE_INFO_REPORT;
         msg.did = mac;
         msg.attribute = channelid;
         return msg;
     }
 
-    public static ZiroomMessage deviceMetaMessage( int product, int model) {
+    public static ZiroomMessage deviceMetaMessage(int product, int model) {
         ZiroomMessage msg = new ZiroomMessage();
-        msg.type = "DEVICE_META";
+        msg.type = DEVICE_META;
         msg.model = String.valueOf(model);
         msg.command = String.valueOf(product);
         return msg;
@@ -26,7 +35,7 @@ public class ZiroomMessage implements IsSerializable {
 
     public static ZiroomMessage deviceConnectMessage(String channelid, String ip) {
         ZiroomMessage msg = new ZiroomMessage();
-        msg.type = "DEVICE_CONNECT";
+        msg.type = DEVICE_CONNECT;
         msg.did = ip;
         msg.attribute = channelid;
         return msg;
@@ -34,14 +43,15 @@ public class ZiroomMessage implements IsSerializable {
 
     public static ZiroomMessage deviceDisconnectMessage(String chanelId) {
         ZiroomMessage msg = new ZiroomMessage();
-        msg.type = "DEVICE_DISCONNECT";
+        msg.type = DEVICE_DISCONNECT;
         msg.attribute = chanelId;
         return msg;
     }
+
     public static ZiroomMessage deviceUnknownMessage(String data) {
         ZiroomMessage msg = new ZiroomMessage();
-        msg.type = "DEVICE_UNKNOWNdfsdsf";
-        msg.command=data;
+        msg.type = DEVICE_UNKNOWN;
+        msg.command = data;
         return msg;
     }
 
@@ -94,8 +104,8 @@ public class ZiroomMessage implements IsSerializable {
                 .append("\"data\":[");
         for (int i = 0; i < data.size(); i++) {
             DataValue d = data.get(i);
-            sb.append("{\"k\":").append(d.k).append("\",");
-            sb.append("\"v\":").append(d.v).append("\"}");
+            sb.append("{\"k\":\"").append(d.k).append("\",");
+            sb.append("\"v\":\"").append(d.v).append("\"}");
         }
         sb.append("]")
                 .append("}");

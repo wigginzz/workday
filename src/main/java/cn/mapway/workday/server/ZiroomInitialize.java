@@ -4,26 +4,25 @@ import cn.mapway.workday.service.MqttService;
 import cn.mapway.workday.tools.Springs;
 import cn.mapway.workday.ui.server.ZiroomPacket;
 import cn.mapway.workday.ui.shared.ConstStrings;
-import cn.mapway.workday.ui.shared.module.ChanelMessage;
 import cn.mapway.workday.ui.shared.module.DeviceInformation;
 import cn.mapway.workday.ui.shared.module.ZiroomMessage;
-import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.AttributeKey;
+import io.netty.util.concurrent.EventExecutorGroup;
 import org.nutz.json.Json;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiConsumer;
-import java.util.zip.ZipInputStream;
 
-public class DeviceProcessor extends ChannelInboundHandlerAdapter {
+public class ZiroomInitialize extends ZiroomBaseHandler {
 
-    private final static Log log = Logs.getLog(DeviceProcessor.class);
+    private final static Log log = Logs.getLog(ZiroomInitialize.class);
+
 
     public final static AttributeKey<DeviceInformation> attributeKey = AttributeKey.valueOf("di");
 
@@ -54,57 +53,10 @@ public class DeviceProcessor extends ChannelInboundHandlerAdapter {
         return sessions.get(chanelId);
     }
 
-    public
-    MqttService mqttService;
 
-    private final synchronized MqttService getMqttService() {
-        if (mqttService == null) {
-            mqttService = Springs.get(MqttService.class);
-        }
-        return mqttService;
-    }
-
-    /**
-     * 从设备法国来的消息
-     *
-     * @param ctx
-     * @param msg
-     */
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws UnsupportedEncodingException {
-
-        ByteBuf buffer = (ByteBuf) msg;
-        ZiroomMessage ziroomMessage = ZiroomPacket.decode(buffer);
-        if(ziroomMessage.type.equals("DEVICE_META")|| ziroomMessage.type.equals("DEVICE_UNKNOWN"))
-        {
-            ziroomMessage.attribute=ctx.channel().id().asShortText();
-        }
-		
-		if(ziroomMessage.type.equals("DEVICE_META"))
-		{
-			ZiroomMessage zmsg = ZiroomMessage.deviceQueryMessage();		
-			System.out.printf("send data to  " + Json.toJson(zmsg, JsonFormat.compact()));
-			ctx.writeAndFlush(ZiroomPacket.encode(zmsg));
-		}
-
-        notifyChanged("/arrive", ziroomMessage);
-    }
-
-
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
-        cause.printStackTrace();
-        ctx.close();
-    }
-
-    /**
-     * 设备连接
-     *
-     * @param ctx
-     * @throws Exception
-     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         super.channelActive(ctx);
-
         DeviceInformation di = new DeviceInformation();
         ctx.attr(attributeKey).set(di);
         di.channelId = ctx.channel().id().asShortText();
@@ -113,13 +65,11 @@ public class DeviceProcessor extends ChannelInboundHandlerAdapter {
         ZiroomMessage ziroomMessage = ZiroomMessage.deviceConnectMessage(di.channelId, ctx.channel().remoteAddress().toString());
         notifyChanged("/arrive", ziroomMessage);
 
-
         //设备连接后发送查询设备型号指令
         ctx.writeAndFlush(ZiroomPacket.queryInfoPackage());
         log.info("ziroom active ");
 
     }
-
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
@@ -128,9 +78,7 @@ public class DeviceProcessor extends ChannelInboundHandlerAdapter {
         sessions.remove(di.channelId);
         ZiroomMessage ziroomMessage = ZiroomMessage.deviceDisconnectMessage(di.channelId);
         notifyChanged("/arrive", ziroomMessage);
+        log.info("ziroom inactive ");
     }
 
-    private void notifyChanged(String suffix, ZiroomMessage msg) {
-        getMqttService().publish(ConstStrings.TOPIC_PREFIX + suffix, Json.toJson(msg));
-    }
 }
