@@ -1,9 +1,10 @@
 package cn.mapway.workday.ui.server;
 
 import cn.ennwifi.webframe.ui.shared.module.ServerException;
+import cn.mapway.workday.server.ZiroomInitialize;
 import cn.mapway.workday.ui.shared.module.ZiroomMessage;
 import cn.mapway.workday.ui.shared.module.DeviceInformation;
-import cn.mapway.workday.server.DeviceProcessor;
+import cn.mapway.workday.server.ZiroomProcessor;
 import cn.mapway.workday.service.WorkdayService;
 import cn.mapway.workday.tools.Jsps;
 import cn.mapway.workday.tools.Springs;
@@ -13,7 +14,6 @@ import cn.mapway.workday.ui.shared.repository.D_ATTRIBUTE_OPERATORObj;
 import cn.mapway.workday.ui.shared.repository.D_OPERATOR_PARAMETERObj;
 import cn.mapway.workday.ui.shared.repository.D_PRODUCT_ATTRIBUTEObj;
 import cn.mapway.workday.ui.shared.repository.D_PRODUCT_INFOObj;
-import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import io.netty.channel.ChannelHandlerContext;
 import org.nutz.dao.Cnd;
@@ -163,13 +163,13 @@ public class WorkdayServlet extends RemoteServiceServlet implements IWorkdayServ
 
     @Override
     public List<DeviceInformation> getAllDevices() throws ServerException {
-        return DeviceProcessor.getAllDeviceList();
+        return ZiroomInitialize.getAllDeviceList();
     }
 
     @Override
     public void sendMessage(String chanelId, ZiroomMessage message) throws ServerException {
         System.out.printf("send data to client " + chanelId + " " + Json.toJson(message, JsonFormat.compact()));
-        ChannelHandlerContext chanelContext = DeviceProcessor.getChanelContext(chanelId);
+        ChannelHandlerContext chanelContext = ZiroomInitialize.getChanelContext(chanelId);
         chanelContext.writeAndFlush(ZiroomPacket.encode(message));
     }
 }

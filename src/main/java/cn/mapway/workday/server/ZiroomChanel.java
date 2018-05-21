@@ -16,9 +16,10 @@ public class ZiroomChanel extends ChannelInitializer<SocketChannel> { //配置�
 
     @Override
     protected void initChannel(SocketChannel socketChannel) {
-        socketChannel.pipeline().addLast(new DeviceProcessor());
+        socketChannel.pipeline()
+                .addLast(new ZiroomInitialize())
+                .addLast(new ZiroomDecoder())
+                .addLast(new ZiroomProcessor());
         log.info("socket chanel initialized");
     }
-
-
 }
