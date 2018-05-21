@@ -88,23 +88,25 @@ public class ZiroomDecoder extends ByteToMessageDecoder {
     }
 
     int toInteger(byte byte1, byte byte2) {
-        return byte1 << 8 & 0xFF00 + byte2 & 0xFF;
+        return (byte1 << 8 & 0xFF00) + (byte2 & 0xFF);
     }
 
     int toLong(byte byte1, byte byte2, byte byte3, byte byte4) {
-        return byte1 << 24 & 0xFF000000
-                + byte2 << 16 & 0x00FF0000
-                + byte3 << 8 & 0x0000FF00
-                + byte4 & 0xFF;
+        return (byte1 << 24 & 0xFF000000)
+                + (byte2 << 16 & 0x00FF0000)
+                + (byte3 << 8 & 0x0000FF00)
+                + (byte4 & 0xFF);
     }
 
     private ZiroomMessage parseZiroomPackage(ByteBuf buf) throws UnsupportedEncodingException {
         ZiroomMessage msg;
         byte byte1 = buf.readByte();
         byte byte2 = buf.readByte();
+        log.info(String.format("length %x %x ", (int) byte1, (int) byte2));
         int length = toInteger(byte1, byte2);
         byte encoder = buf.readByte();
         byte format = buf.readByte();
+        log.info("package length>" + length);
         if (format == 0x11 || format == 0x21) {
             byte[] data = new byte[length - 6];
             buf.readBytes(data);
@@ -138,7 +140,7 @@ public class ZiroomDecoder extends ByteToMessageDecoder {
         }
         byte byte0 = byteBuf.getByte(0);
         byte byte1 = byteBuf.getByte(1);
-        if ((byte1 == 0xFF) && (byte0 == 0xFF)) {
+        if ((byte1 == (byte) 0xFF) && (byte0 == (byte) 0xFF)) {
             //确定是元数据包 需要12个字节
             if (count >= 12) {
                 return PACKAGE_META;
@@ -164,4 +166,5 @@ public class ZiroomDecoder extends ByteToMessageDecoder {
             }
         }
     }
+
 }
