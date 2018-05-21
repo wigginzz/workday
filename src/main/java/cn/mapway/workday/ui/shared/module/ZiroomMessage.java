@@ -40,11 +40,16 @@ public class ZiroomMessage implements IsSerializable {
     }
     public static ZiroomMessage deviceUnknownMessage(String data) {
         ZiroomMessage msg = new ZiroomMessage();
-        msg.type = "DEVICE_UNKNOWN";
+        msg.type = "DEVICE_UNKNOWNdfsdsf";
         msg.command=data;
         return msg;
     }
 
+    public static ZiroomMessage deviceQueryMessage() {
+        ZiroomMessage msg = new ZiroomMessage();
+        msg.type = "DEVICE_INFO_QUERY";
+        return msg;
+    }
 
     public ZiroomMessage() {
         data = new ArrayList<>();

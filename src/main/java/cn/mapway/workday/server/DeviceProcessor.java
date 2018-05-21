@@ -78,6 +78,13 @@ public class DeviceProcessor extends ChannelInboundHandlerAdapter {
         {
             ziroomMessage.attribute=ctx.channel().id().asShortText();
         }
+		
+		if(ziroomMessage.type.equals("DEVICE_META"))
+		{
+			ZiroomMessage zmsg = ZiroomMessage.deviceQueryMessage();		
+			System.out.printf("send data to  " + Json.toJson(zmsg, JsonFormat.compact()));
+			ctx.writeAndFlush(ZiroomPacket.encode(zmsg));
+		}
 
         notifyChanged("/arrive", ziroomMessage);
     }
@@ -108,7 +115,7 @@ public class DeviceProcessor extends ChannelInboundHandlerAdapter {
 
 
         //设备连接后发送查询设备型号指令
-        ctx.write(ZiroomPacket.queryInfoPackage());
+        ctx.writeAndFlush(ZiroomPacket.queryInfoPackage());
         log.info("ziroom active ");
 
     }
