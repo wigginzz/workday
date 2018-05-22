@@ -41,5 +41,5 @@ public interface IWorkdayServer extends RemoteService {
     Map<String,String> versions();
 
     List<DeviceInformation> getAllDevices() throws ServerException;
-    void sendMessage(String chanelId, ZiroomMessage message) throws ServerException;
+    void sendMessage(String chanelId, String message) throws ServerException;
 }

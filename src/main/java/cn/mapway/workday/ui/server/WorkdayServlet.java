@@ -167,9 +167,11 @@ public class WorkdayServlet extends RemoteServiceServlet implements IWorkdayServ
     }
 
     @Override
-    public void sendMessage(String chanelId, ZiroomMessage message) throws ServerException {
-        System.out.printf("send data to client " + chanelId + " " + Json.toJson(message, JsonFormat.compact()));
+    public void sendMessage(String chanelId, String message) throws ServerException {
+        ZiroomMessage msg = Json.fromJson(ZiroomMessage.class, message);
+
+        System.out.printf("send data to client " + chanelId + " " + Json.toJson(message, JsonFormat.full()));
         ChannelHandlerContext chanelContext = ZiroomInitialize.getChanelContext(chanelId);
-        chanelContext.writeAndFlush(ZiroomPacket.encode(message));
+        chanelContext.writeAndFlush(ZiroomPacket.encode(msg));
     }
 }

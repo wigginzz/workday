@@ -43,5 +43,5 @@ public interface IWorkdayServerAsync {
 
     void getAllDevices(AsyncCallback<List<DeviceInformation>> async);
 
-    void sendMessage(String chanelId, ZiroomMessage message, AsyncCallback<Void> async);
+    void sendMessage(String chanelId, String message, AsyncCallback<Void> async);
 }

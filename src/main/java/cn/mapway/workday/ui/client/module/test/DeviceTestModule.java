@@ -317,9 +317,10 @@ public class DeviceTestModule extends AbstractModuleWithEvent {
         }
         String id = ddlDevices.getSelectedValue();
         if (id != null && id.length() > 0) {
-            ZiroomMessage msg = new ZiroomMessage();
-            msg.command = txtPAYLOAD.getValue();
-            WorkdayProxy.get().sendMessage(id, msg, new AsyncCallback<Void>() {
+
+           String json = txtPAYLOAD.getValue();
+
+            WorkdayProxy.get().sendMessage(id, json, new AsyncCallback<Void>() {
                 @Override
                 public void onFailure(Throwable throwable) {
 
