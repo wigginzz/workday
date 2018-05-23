@@ -90,6 +90,7 @@ public class ZiroomDecoder extends ByteToMessageDecoder {
 
         Integer producer = toLong(byte5, byte6, byte7, byte8);//生产商
         Integer model = toLong(byte9, byte10, byte11, byte12); //设备型号
+        buf.clear();
         return ZiroomMessage.deviceMetaMessage(producer, model);
     }
 
@@ -108,11 +109,10 @@ public class ZiroomDecoder extends ByteToMessageDecoder {
         ZiroomMessage msg;
         byte byte1 = buf.readByte();
         byte byte2 = buf.readByte();
-        log.info(String.format("length %x %x ", (int) byte1, (int) byte2));
+       // log.info(String.format("length %x %x ", (int) byte1, (int) byte2));
         int length = toInteger(byte1, byte2);
         byte encoder = buf.readByte();
         byte format = buf.readByte();
-        log.info("package length>" + length);
         if (format == 0x11 || format == 0x21) {
             byte[] data = new byte[length - 6];
             buf.readBytes(data);
@@ -128,6 +128,7 @@ public class ZiroomDecoder extends ByteToMessageDecoder {
             }
             msg = ZiroomMessage.deviceUnknownMessage(sb.toString());
         }
+		buf.clear();
         return msg;
     }
 
